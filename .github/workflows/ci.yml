@@ -29,8 +29,6 @@ jobs:
           node-version: 18
       - name: Install Ember
         run: pnpx ember-cli@5 new fresh-app --package-manager=pnpm
-      - name: Update test-helpers package
-        run: cd fresh-app && pnpm add @ember/test-helpers@4.0.5
       - name: Install puppeteer
         run: pnpm install
       - name: Serve and dump with puppeteer
