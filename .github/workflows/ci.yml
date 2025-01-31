@@ -28,6 +28,8 @@ jobs:
         with:
           node-version: 18
       - name: Install Ember
-        run: pnpx ember-cli@5 new fresh-app --package-manager=pnpm
-      - run: pnpm install
-      - run: pnpm ember serve --environment=production 
+        run: |
+          pnpx ember-cli@5 new fresh-app --package-manager=pnpm
+          cd fresh-app
+          pnpm install
+          pnpm ember serve --environment=production 
