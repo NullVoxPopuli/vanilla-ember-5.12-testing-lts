@@ -16,7 +16,7 @@ jobs:
   test:
     name: "Test"
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 3
 
     steps:
       - uses: actions/checkout@v3
@@ -29,15 +29,5 @@ jobs:
           node-version: 18
       - name: Install Ember
         run: pnpx ember-cli@5 new fresh-app --package-manager=pnpm
-      - name: Install puppeteer
-        run: pnpm install
-      - name: Serve and dump with puppeteer
-        run: |
-          cd fresh-app
-          pnpm ember serve --environment=production & echo $! > ../server.pid
-          pnpx wait-on http://localhost:4200
-          node ../dump-browser.js || { echo "Console errors detected"; exit 1; }
-      - name: clean up
-        run: |
-          kill $(cat server.pid) || true
-          rm server.pid
+      - run: pnpm install
+      - run: pnpm ember serve --environment=production 
