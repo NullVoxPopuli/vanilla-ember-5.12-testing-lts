@@ -32,4 +32,4 @@ jobs:
           pnpx ember-cli@5 new fresh-app --package-manager=pnpm
           cd fresh-app
           pnpm install
-          pnpm ember serve --environment=production 
+          pnpm ember test --environment=production 
